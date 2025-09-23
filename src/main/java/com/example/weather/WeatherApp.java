@@ -14,7 +14,11 @@ public class WeatherApp {
             return;
         }
 
-        List<String> cities = List.of("St. Louis", "Chicago", "Kansas City");
+        List<String> cities = List.of(
+                "Chicago,US",
+                "Saint Louis,US",
+                "Los Angeles,US"
+        );
 
         Scanner in = new Scanner(System.in);
         RestTemplate rest = new RestTemplate();
@@ -51,11 +55,14 @@ public class WeatherApp {
                 city = cities.get(idx);
             }
 
+            String cityForQuery = city.trim().replace(" ", "+"); // "Los+Angeles,US"
+
             String url = UriComponentsBuilder
                     .fromHttpUrl("https://api.openweathermap.org/data/2.5/weather")
-                    .queryParam("q", city)
+                    .queryParam("q", cityForQuery)
                     .queryParam("appid", apiKey)
                     .queryParam("units", units)
+                    .build(true)
                     .toUriString();
 
             Map<String, Object> json = rest.getForObject(url, Map.class);
