@@ -10,7 +10,7 @@ public class WeatherApp {
     public static void main(String[] args) {
         String apiKey = System.getenv("OWM_API_KEY");
         if (apiKey == null || apiKey.isBlank()) {
-            System.out.println("Set OPENWEATHER_API_KEY environment variable and rerun.");
+            System.out.println("Set OWM_API_KEY environment variable and rerun.");
             return;
         }
 
