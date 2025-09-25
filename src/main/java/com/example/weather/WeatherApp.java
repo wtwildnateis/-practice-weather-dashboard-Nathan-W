@@ -17,7 +17,8 @@ public class WeatherApp {
         List<String> cities = List.of(
                 "Chicago,US",
                 "Saint Louis,US",
-                "Los Angeles,US"
+                "Los Angeles,US",
+                "New York,US"
         );
 
         Scanner in = new Scanner(System.in);
